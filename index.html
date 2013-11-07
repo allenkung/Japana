@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>五十音</title>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	
+	body {
+		font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+		color: #333;
+	}
+	
+	dl {
+		width: 600px;
+		margin: 200px auto;
+		
+	}
+	
+	#Hiragana {
+		font-size: 200px;
+	}
+
+	#Katakana {
+		display: none;
+	}
+	
+	#Roman {
+		display: none;
+	}
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+
+<dl>
+	<dt id="Hiragana"></dt>
+	<dd id="Katakana"></dd>
+	<dd id="Roman"></dd>
+	<dd id="Example"></dd>
+</dl>
+
+<script>
+function RandomOne() {	
+	$.getJSON( "test.json", function( data ) {
+//		<?php
+//			$x = rand(0, 4);
+//			echo "$('#Roman').append(data.jap[" . $x . "].Roman);";
+//			echo "$('#Hiragana').append(data.jap[" . $x . "].Hiragana);";
+//			echo "$('#Katakana').append(data.jap[" . $x . "].Katakana);";
+//		?>
+			var x = Math.floor(Math.random()*52);
+			$('#Hiragana').text(data.jap[x].Hiragana);
+			$('#Katakana').text(data.jap[x].Katakana);
+			$('#Roman').text(data.jap[x].Roman);
+			$('#Example').text(data.jap[x].Example);
+			document.title = "五十音 - " + data.jap[x].Hiragana;
+	});
+};	
+
+$(document).ready(function() {
+	RandomOne();
+	
+	var i = 0;
+	
+	//点击显示
+	$("html").click(function() {
+		if (i==0) {
+			$("#Katakana").fadeIn("fast");
+			i++;
+		}
+		else if (i==1) {
+			$("#Roman").fadeIn("fast");
+			i++;
+		}
+		else if (i==2) {
+			$("#Katakana").hide();
+			$("#Roman").hide();
+			RandomOne();
+			i=0;
+		}
+	});
+});
+
+</script>
+</body>
+</html>
