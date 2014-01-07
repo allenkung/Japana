@@ -3,8 +3,7 @@
 	{
 		"Hiragana":"あ",
 		"Katakana":"ア",
-		"Roman":"a",
-		"Example":"愛（あい）"},
+		"Roman":"a"},
 	{
 		"Hiragana":"い",
 		"Katakana":"イ",
@@ -204,5 +203,6 @@
 	{
 		"Hiragana":"ん",
 		"Katakana":"ン",
-		"Roman":"n"}]
+		"Roman":"n"}
+	]
 }
